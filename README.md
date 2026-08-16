@@ -1,4 +1,4 @@
-# PhishGuard  — Enhanced Setup & Run Guide
+# PhishGuard v2.0 — Enhanced Setup & Run Guide
 
 A production-grade 5-stage phishing URL detection system.
 
