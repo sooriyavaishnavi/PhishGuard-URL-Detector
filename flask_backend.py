@@ -13,6 +13,7 @@ import joblib
 import numpy as np
 import requests
 import tldextract
+from huggingface_hub import download_bucket_files
 from urllib.parse import urlparse, unquote
 from scipy.sparse import hstack, csr_matrix
 from datetime import datetime
@@ -24,6 +25,17 @@ CORS(app)
 MODEL_PATH     = os.path.join("models", "best_model.pkl")
 TFIDF_PATH     = os.path.join("models", "tfidf.pkl")
 BLACKLIST_PATH = os.path.join("models", "blacklist_cache.json")
+# Download the large ML model from Hugging Face Bucket if it is not available locally
+if not os.path.exists(MODEL_PATH):
+    os.makedirs("models", exist_ok=True)
+    print("⬇️ Downloading best_model.pkl from Hugging Face...")
+    download_bucket_files(
+        "sooriyavaishnavi/PhishGuard-URL-Detector",
+        files=[
+            ("best_model.pkl", MODEL_PATH)
+        ],
+    )
+    print("✅ best_model.pkl downloaded successfully")
 
 best_model = None
 tfidf      = None
