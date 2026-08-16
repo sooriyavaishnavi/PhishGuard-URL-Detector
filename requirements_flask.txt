@@ -9,4 +9,4 @@ tldextract==5.1.2
 requests==2.32.3
 pandas==2.2.2
 huggingface_hub
-gunicorn
+gunicorn==22.0.0
